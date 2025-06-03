@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Menu Principal</title>
+    <link
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background: linear-gradient(to right, #2f00fe, #d1a3ff);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilização do nav */
+nav {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Título centralizado */
+h1 {
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #00000050;
+}
+
+/* Lista do menu */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+/* Itens da lista */
+li {
+  margin: 15px 0;
+}
+
+/* Links do menu */
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.3em;
+  padding: 10px 25px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 200px; /* LARGURA FIXA */
+  text-align: center;
+}
+
+
+/* Efeito ao passar o mouse */
+a:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: solid 1px #000000;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <h1 align="center">Menu Principal</h1>
+        <li><a href="/cliente">Clientes</a></li>
+        <li><a href="/fornecedor">Fornecedores</a></li>
+        <li><a href="/categoria">Categorias</a></li>
+        <li><a href="/produto">Produtos</a></li>
+        <li><a href="/compra">Compras</a></li>
+        <li><a href="/venda">Vendas</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>

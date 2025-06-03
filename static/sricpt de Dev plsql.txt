@@ -1,0 +1,109 @@
+Olá, meu nome é Wendel, sou desenvolvedor com foco em PL/SQL e vou contar um pouco sobre minha trajetória na área de tecnologia.
+
+Atualmente, estou cursando Análise e Desenvolvimento de Sistemas na Universidade Unicid, com previsão de término ainda este ano. Tenho como objetivo seguir me especializando na área de dados, com uma pós-graduação voltada para Engenharia de Dados e Inteligência Artificial, que são áreas em destaque no mercado e que me despertam muito interesse.
+
+Minha jornada na programação começou em 2019, quando meu pai começou a trabalhar como desenvolvedor PL/SQL. Acompanhar o trabalho dele despertou meu interesse e comecei a estudar por conta própria. Durante a pandemia, aproveitei o tempo para aprofundar meus conhecimentos, começando com um curso de MySQL do Curso em Vídeo, e depois fiz vários cursos na Udemy, principalmente focados em PL/SQL, SQL Server e lógica de programação.
+
+Profissionalmente, comecei na CLT Leite, onde atuei entre janeiro de 2021 e abril de 2022 como Desenvolvedor PL/SQL. Trabalhei com desenvolvimento e manutenção de procedures, triggers, functions e packages, além de atuar com views, subselects complexos, CTEs e joins entre múltiplas tabelas. Também tive contato com análise e otimização de queries, reestruturação de objetos de banco de dados e criação de scripts para rotinas automatizadas em Python. Lá, tive a oportunidade de trabalhar tanto com demandas de nível júnior quanto pleno, sempre contribuindo em reuniões técnicas e na documentação das soluções.
+
+Após essa experiência, trabalhei na Cruzeiro do Sul Educacional como Desenvolvedor PL/SQL Pleno, de maio de 2022 até abril de 2024. Lá, minha principal responsabilidade foi o desenvolvimento e manutenção de código PL/SQL em ambientes Oracle e SQL Server. Trabalhei fortemente com procedures e funções, triggers para controle de alterações nos dados, views para facilitar a geração de relatórios e scripts otimizados para consultas complexas. Automatizei tarefas com Python, apoiei integrações de dados entre sistemas, além de trabalhar com versionamento de código no Git e acompanhar tarefas por meio do Azure DevOps, sempre atuando dentro de metodologias ágeis como Scrum.
+
+
+
+
+✅ 1. DML (Data Manipulation Language) — Manipulação de Dados:
+Usada para manipular registros nas tabelas do banco:
+
+SELECT – Consulta dados
+
+INSERT INTO – Insere dados
+
+UPDATE – Atualiza dados
+
+DELETE – Exclui dados
+
+MERGE – Insere ou atualiza dados com base em condição (upsert)
+
+LOCK TABLE – Bloqueia tabela para atualizações
+
+🛠 2. DDL (Data Definition Language) — Definição de Estrutura:
+Usada para criar e alterar estruturas de banco de dados:
+
+CREATE – Cria objetos (tabela, view, sequence, procedure etc.)
+
+ALTER – Altera estrutura de objetos
+
+DROP – Exclui objetos
+
+TRUNCATE – Apaga todos os registros da tabela de forma rápida (sem log de undo)
+
+RENAME – Renomeia objetos
+
+COMMENT – Adiciona comentários aos objetos
+
+🔒 3. DCL (Data Control Language) — Controle de Acesso:
+Usada para controle de permissões:
+
+GRANT – Concede privilégios
+
+REVOKE – Revoga privilégios
+
+🔁 4. TCL (Transaction Control Language) — Controle de Transações:
+Usada para gerenciar transações (confirmação ou reversão de alterações):
+
+COMMIT – Confirma transação
+
+ROLLBACK – Desfaz transação
+
+SAVEPOINT – Cria ponto de salvamento para rollback parcial
+
+SET TRANSACTION – Define características da transação
+
+⚙️ 5. Recursos da linguagem PL/SQL (procedural):
+São os blocos e estruturas que tornam o SQL procedural:
+
+Blocos PL/SQL
+Estrutura básica: DECLARE ... BEGIN ... EXCEPTION ... END;
+
+Tipos de blocos
+Anônimos – Executados diretamente no ambiente SQL
+
+Procedures – Blocos nomeados que realizam ações
+
+Functions – Retornam valores
+
+Packages – Conjunto de procedures/functions organizados
+
+Triggers – Executadas automaticamente após eventos (INSERT/UPDATE/DELETE)
+
+Estruturas de Controle
+IF ... THEN ... ELSE
+
+CASE
+
+LOOP, WHILE, FOR
+
+EXIT, CONTINUE
+
+Tipos de dados
+NUMBER, VARCHAR2, DATE, BOOLEAN, CLOB, BLOB, TABLE, RECORD, CURSOR
+
+Cursores
+Explícitos – Definidos pelo programador
+
+Implícitos – Gerenciados automaticamente
+
+Usados para percorrer e manipular linhas de uma consulta
+
+Exceções
+EXCEPTION WHEN ... THEN – Tratamento de erros personalizados ou padrões
+
+Coleções
+VARRAY, Nested Table, Associative Array (Index-by Tables)
+
+Outros comandos úteis
+EXECUTE IMMEDIATE – SQL dinâmico
+
+DBMS_OUTPUT.PUT_LINE – Impressão de mensagens
+
+RAISE_APPLICATION_ERROR – Levantar erro personalizado

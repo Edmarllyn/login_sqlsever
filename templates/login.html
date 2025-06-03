@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Fundo lilás com alinhamento central */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #2f00fe, #d1a3ff);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo do formulário de login */
+form {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+/* Título */
+h1 {
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #00000050;
+}
+
+/* Campos de entrada */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1em;
+  outline: none;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #f0eaff;
+}
+
+input:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px #000000;
+}
+
+/* Botão de login */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: #0b0b0b;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #e0c2ff;
+  transform: scale(1.05);
+}
+
+/* Mensagem de erro */
+.erro {
+  color: #f5f5f5;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+    </style>
+  </head>
+  <body>
+    <form method="POST">
+      <h1 align="center">Login</h1>
+      <input type="text" name="usuario" placeholder="Usuário" required />
+      <input type="password" name="senha" placeholder="Senha" required />
+      <button type="submit">Entrar</button>
+      {% if mensagem %}
+    <p class="erro">{{ mensagem }}</p>
+    {% endif %}
+    </form>
+    
+  </body>
+</html>

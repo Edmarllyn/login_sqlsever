@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registro de Venda</title>
+    <link
+      rel="stylesheet"
+      />
+     <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #2f00fe, #d1a3ff);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0 60px;
+      }
+
+      .bloco-formulario {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 40px 30px;
+        width: 420px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .bloco-formulario h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2em;
+      }
+
+      label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      input[type="date"],
+      input[type="number"],
+      select {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1em;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button[type="submit"],
+      .bloco-formulario button[type="button"] {
+        padding: 12px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      button[type="submit"]:hover,
+      .bloco-formulario button[type="button"]:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border: solid 1px #000000;
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .mensagem {
+        text-align: center;
+        font-weight: bold;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 420px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .sucesso {
+        background-color: #00b300aa;
+        color: #e0ffe0;
+        border: 1px solid #00cc00;
+      }
+
+      .erro {
+        background-color: #ff3333aa;
+        color: #ffe0e0;
+        border: 1px solid #ff0000;
+      }
+
+      .bloco-lista {
+        width: 90%;
+        max-width: 600px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 25px 30px;
+        color: #fff;
+      }
+
+      .bloco-lista h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      ul li {
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        font-size: 1em;
+      }
+
+      ul li:last-child {
+        border-bottom: none;
+      }
+
+      @media (max-width: 480px) {
+        .bloco-formulario,
+        .bloco-lista {
+          width: 95%;
+          padding: 30px 15px;
+        }
+
+        .mensagem {
+          width: 95%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bloco-formulario">
+      <form method="POST" action="{{ url_for('venda') }}">
+        <h1 align="center">Registrar Venda</h1>
+
+        <label for="clienteid">Cliente:</label>
+        <select id="clienteid" name="clienteid" required>
+          <option value="">Selecione o Cliente</option>
+          {% for cliente in clientes %}
+          <option value="{{ cliente.clienteid }}">{{ cliente.nome }}</option>
+          {% endfor %}</select
+        ><br />
+
+        <label for="datavenda">Data da Venda:</label>
+        <input type="date" id="datavenda" name="datavenda" required /><br />
+
+        <label for="produtoid">Produto:</label>
+        <select id="produtoid" name="produtoid" required>
+          <option value="">Selecione o Produto</option>
+          {% for produto in produtos %}
+          <option value="{{ produto.produtoid }}">{{ produto.nome }}</option>
+          {% endfor %}</select
+        ><br />
+
+        <label for="quantidade">Quantidade:</label>
+        <input
+          type="number"
+          id="quantidade"
+          name="quantidade"
+          min="1"
+          value="1"
+          required
+        /><br />
+
+        <label for="precounitario">Preço Unitário:</label>
+        <input
+          type="number"
+          id="precounitario"
+          name="precounitario"
+          step="0.01"
+          min="0"
+          required
+        /><br />
+
+        <button type="submit">Registrar Venda</button>
+        <button
+          type="button"
+          onclick="window.location.href='{{ url_for('menu') }}'"
+        >
+          Voltar ao Menu
+        </button>
+      </form>
+
+      {% if mensagem %}
+      <p class="mensagem {{ 'sucesso' if sucesso else 'erro' }}">
+        {{ mensagem }}
+      </p>
+      {% endif %}
+    </div>
+
+    <div class="bloco-lista">
+      <h2>Vendas Registradas</h2>
+      <ul>
+        {% for venda in vendas %}
+        <li>
+          <strong>ID:</strong> {{ venda.vendaid }} |
+          <strong>Cliente:</strong> {{ venda.cliente_nome }} |
+          <strong>Data:</strong> {{ venda.datavenda[:10] | replace('-', '/') if
+          venda.datavenda else '' }} | <strong>Total:</strong> R$ {{
+          '%.2f'|format(venda.valortotal) }}
+        </li>
+        {% else %}
+        <li>Nenhuma venda registrada.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

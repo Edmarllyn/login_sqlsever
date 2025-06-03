@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cadastro de Produto</title>
+    <link
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #2f00fe, #d1a3ff);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 400px;
+        text-align: center;
+      }
+
+      form h1 {
+        font-size: 2em;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      form input,
+      form select {
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        outline: none;
+      }
+
+      form button {
+        padding: 12px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      form button:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border: solid 1px #000000;
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .sucesso {
+        color: #00ff88;
+        margin-top: 10px;
+      }
+
+      .erro {
+        color: #ffffff;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bloco-formulario">
+      <form method="POST">
+        <h1>Cadastro de Produto</h1>
+        <input type="text" name="nome" placeholder="Nome" required /><br />
+        <input type="text" name="descricao" placeholder="Descrição" /><br />
+        <input
+          type="number"
+          name="precovenda"
+          placeholder="Preço de Venda"
+          step="0.01"
+          required
+        /><br />
+        <input
+          type="number"
+          name="precocompra"
+          placeholder="Preço de Compra"
+          step="0.01"
+          required
+        /><br />
+        <input
+          type="number"
+          name="estoque"
+          placeholder="Estoque"
+          required
+        /><br />
+        <select name="categoriaid" required>
+          <option value="">Selecione a Categoria</option>
+          {% for cat in categorias %}
+          <option value="{{ cat.categoriaid }}">{{ cat.nome }}</option>
+          {% endfor %}</select
+        ><br />
+        <button type="submit">Cadastrar</button>
+        <a href="/menu"><button type="button">Voltar ao Menu</button></a>
+       
+        {% if mensagem %}
+      <p class="{{ 'sucesso' if sucesso else 'erro' }}">{{ mensagem }}</p>
+      {% endif %}
+      
+      </form>
+
+      
+    </div>
+  </body>
+</html>

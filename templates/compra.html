@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registro de Compra</title>
+    <link
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #2f00fe, #d1a3ff);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin-top: 40px;
+        width: 420px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      form h1 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 2em;
+        color: #fff;
+      }
+
+      label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      input[type="date"],
+      input[type="number"],
+      select {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1em;
+        outline: none;
+      }
+
+      button[type="submit"],
+      form a button {
+        padding: 12px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+      }
+
+      button[type="submit"]:hover,
+      form a button:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border: solid 1px #000000;
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      form a {
+        text-align: center;
+        margin-top: 10px;
+        text-decoration: none;
+      }
+
+      .mensagem {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+
+      .sucesso {
+        color: #00ff88;
+      }
+
+      .erro {
+        color: #ff4f4f;
+      }
+
+      /* Estilo da tabela */
+      .lista-compras {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto 80px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+      }
+
+      .lista-compras h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #fff;
+      }
+
+      th, td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
+      }
+
+      th {
+        background-color: rgba(255, 255, 255, 0.15);
+        font-weight: 700;
+      }
+
+      tr:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      @media (max-width: 600px) {
+        form, .lista-compras {
+          width: 90%;
+        }
+
+        th, td {
+          font-size: 0.9em;
+          padding: 8px;
+        }
+      }
+    </style>
+    <style>
+      .mensagem {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 40px;
+      }
+      .sucesso {
+        color: rgb(0, 255, 0);
+        text-align: center;
+      }
+      .erro {
+        color: rgb(255, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <form method="POST">
+      <h1 align="center">Registrar Compra</h1>
+
+      <label>Fornecedor:</label>
+      <select name="fornecedorid" required>
+        <option value="">Selecione o fornecedor</option>
+        {% for fornecedor in fornecedores %}
+        <option value="{{ fornecedor.fornecedorid }}">
+          {{ fornecedor.nome }}
+        </option>
+        {% endfor %}
+      </select>
+
+      <label>Data da Compra:</label>
+      <input type="date" name="datacompra" required />
+
+      <label>Produto:</label>
+      <select name="produtoid" required>
+        <option value="">Selecione o produto</option>
+        {% for produto in produtos %}
+        <option value="{{ produto.produtoid }}">{{ produto.nome }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Quantidade:</label>
+      <input type="number" name="quantidade" min="1" required />
+
+      <label>Preço Unitário:</label>
+      <input type="number" name="precounitario" step="0.01" min="0" required />
+
+      <button type="submit">Registrar Compra</button>
+      <a href="/menu"><button type="button">Voltar ao Menu</button></a>
+
+      {% if mensagem %}
+    <p class="mensagem {{ 'sucesso' if sucesso else 'erro' }}">
+      {{ mensagem }}
+    </p>
+    {% endif %}
+    
+    </form>
+
+    
+
+    <div class="lista-compras">
+      <h2>Compras Registradas</h2>
+      <table
+        border="1"
+        cellpadding="7"
+        cellspacing="0"
+        style="margin-right: 100px"
+      >
+        <thead>
+          <tr>
+            <th>ID</th> 
+            <th>Fornecedor</th>
+            <th>Data</th>
+            <th>Valor Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for compra in compras %}
+          <tr>
+            <td>{{ compra.compraid }}</td>
+            <td>{{ compra.fornecedor }}</td>
+            <td>{{ compra.datacompra }}</td>
+            <td>R$ {{ "%.2f"|format(compra.valortotal) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+/* Estilo geral */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: #eef1f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+}
+
+/* Títulos */
+h1,
+h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+/* Formulário */
+form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 30px;
+}
+
+/* Campos */
+input,
+select,
+button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Botão */
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Mensagens */
+.erro {
+  color: #e74c3c;
+}
+
+.sucesso {
+  color: #27ae60;
+}
+
+/* Navegação */
+nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  background: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+  background: #0056b3;
+}
+
+/* Blocos reutilizáveis */
+.bloco-lista,
+.lista-clientes,
+.lista-categorias {
+  max-width: 700px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.bloco-lista h2,
+.lista-clientes h2,
+.lista-categorias h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.bloco-lista ul,
+.lista-clientes ul,
+.lista-categorias ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bloco-lista li,
+.lista-clientes li,
+.lista-categorias li {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.lista-cadastrados {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.lista-cadastrados ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-cadastrados li {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+/* Bloco formulário vertical */
+.bloco-formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
