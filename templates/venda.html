@@ -5,8 +5,8 @@
     <title>Registro de Venda</title>
     <link
       rel="stylesheet"
-      />
-     <style>
+    />
+    <style>
       body {
         margin: 0;
         padding: 0;
@@ -198,12 +198,7 @@
         /><br />
 
         <button type="submit">Registrar Venda</button>
-        <button
-          type="button"
-          onclick="window.location.href='{{ url_for('menu') }}'"
-        >
-          Voltar ao Menu
-        </button>
+        <a href="/menu"><button type="button">Voltar ao Menu</button></a>
       </form>
 
       {% if mensagem %}
